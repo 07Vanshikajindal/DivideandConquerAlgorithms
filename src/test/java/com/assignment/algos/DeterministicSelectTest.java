@@ -10,7 +10,7 @@ public class DeterministicSelectTest {
     @Test
     public void testSmallArray() {
         int[] a = {12, 3, 5, 7, 4, 19, 26};
-        int k = 3; // 4th smallest
+        int k = 3;
         int[] expected = Arrays.copyOf(a, a.length);
         Arrays.sort(expected);
         assertEquals(expected[k], DeterministicSelect.select(a, k));

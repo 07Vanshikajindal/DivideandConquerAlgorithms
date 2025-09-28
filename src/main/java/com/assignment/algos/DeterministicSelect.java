@@ -3,8 +3,6 @@ package com.assignment.algos;
 import java.util.Arrays;
 
 public class DeterministicSelect {
-
-    // compatibility
     public static int select(int[] arr, int k) { return select(arr, k, null); }
 
     public static int select(int[] arr, int k, Metrics metrics) {
