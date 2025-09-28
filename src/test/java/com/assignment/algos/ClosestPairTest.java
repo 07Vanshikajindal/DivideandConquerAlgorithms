@@ -32,7 +32,6 @@ public class ClosestPairTest {
         double result = ClosestPair.closestPair(pts);
         assertEquals(expected, result, 1e-6);
     }
-
     @Test
     public void testRandomSets() {
         Random rand = new Random();
