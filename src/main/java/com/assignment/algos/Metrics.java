@@ -1,5 +1,5 @@
 package com.assignment.algos;
-
+// Metrics: counters, depth tracker, CSV writer
 public class Metrics {
     public long comparisons = 0;
     public long recursionDepth = 0;
