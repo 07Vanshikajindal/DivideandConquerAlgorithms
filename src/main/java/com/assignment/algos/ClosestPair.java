@@ -15,7 +15,6 @@ public class ClosestPair {
         return Math.sqrt(dx*dx + dy*dy);
     }
 
-    // compatibility
     public static double closestPair(Point[] pts) { return closestPair(pts, null); }
 
     public static double closestPair(Point[] pts, Metrics metrics) {
