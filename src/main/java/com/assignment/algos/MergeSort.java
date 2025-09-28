@@ -4,17 +4,13 @@ import java.util.Arrays;
 
 public class MergeSort {
     private static final int INSERTION_CUTOFF = 16;
-
-    // Old compatibility method (no metrics)
     public static void sort(int[] a) {
         sort(a, null);
     }
-
-    // New method with metrics
     public static void sort(int[] a, Metrics metrics) {
         if (a == null || a.length <= 1) return;
         if (metrics != null) metrics.startTimer();
-        int[] buf = new int[a.length]; // reusable buffer
+        int[] buf = new int[a.length]; 
         sortRec(a, buf, 0, a.length - 1, metrics);
         if (metrics != null) metrics.stopTimer();
     }
@@ -35,7 +31,6 @@ public class MergeSort {
             if (metrics != null) metrics.exitRecursion();
         }
     }
-
     private static void merge(int[] a, int[] buf, int lo, int mid, int hi, Metrics metrics) {
         int i = lo, j = mid + 1, k = lo;
         while (i <= mid && j <= hi) {
@@ -47,7 +42,6 @@ public class MergeSort {
         while (j <= hi) buf[k++] = a[j++];
         System.arraycopy(buf, lo, a, lo, hi - lo + 1);
     }
-
     private static void insertionSort(int[] a, int lo, int hi, Metrics metrics) {
         for (int i = lo + 1; i <= hi; i++) {
             int key = a[i];
@@ -62,8 +56,6 @@ public class MergeSort {
             a[j + 1] = key;
         }
     }
-
-    // test main left intact
     public static void main(String[] args) {
         int[] a = {5,2,9,1,5,6};
         System.out.println("Before: " + Arrays.toString(a));
