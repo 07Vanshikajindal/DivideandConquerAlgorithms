@@ -21,7 +21,6 @@ public class QuickSortTest {
         QuickSort.sort(a);
         assertArrayEquals(new int[]{}, a);
     }
-
     @Test
     public void testSingleElement() {
         int[] a = {42};
