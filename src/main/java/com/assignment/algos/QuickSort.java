@@ -6,8 +6,6 @@ import java.util.Arrays;
 public class QuickSort {
     private static final int INSERTION_CUTOFF = 16;
     private static final Random RANDOM = new Random();
-
-    // compatibility
     public static void sort(int[] a) { sort(a, null); }
 
     public static void sort(int[] a, Metrics metrics) {
