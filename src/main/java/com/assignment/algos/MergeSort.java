@@ -1,7 +1,5 @@
 package com.assignment.algos;
-
 import java.util.Arrays;
-
 public class MergeSort {
     private static final int INSERTION_CUTOFF = 16;
     public static void sort(int[] a) {
