@@ -1,6 +1,7 @@
 Algorithm Assignment Report
 
-roject Overview
+Project Overview
+
 This project implements and analyzes four classic divide-and-conquer algorithms: MergeSort, QuickSort, **Deterministic Select (Median of Medians), and Closest Pair of Points.  
 The goal is to implement them with safe recursion patterns, analyze their running-time recurrences using the Master Theorem and Akra–Bazzi intuition, and validate theory against actual measurements.
 
