@@ -32,6 +32,7 @@ public class ClosestPairTest {
         double result = ClosestPair.closestPair(pts);
         assertEquals(expected, result, 1e-6);
     }
+
     @Test
     public void testRandomSets() {
         Random rand = new Random();
@@ -44,5 +45,27 @@ public class ClosestPairTest {
             double result = ClosestPair.closestPair(pts);
             assertEquals(expected, result, 1e-6);
         }
+    }
+
+    @Test
+    public void testTwoPoints() {
+        ClosestPair.Point[] pts = {
+                new ClosestPair.Point(1, 1),
+                new ClosestPair.Point(4, 5)
+        };
+        double expected = 5.0; // sqrt((4-1)^2 + (5-1)^2)
+        double result = ClosestPair.closestPair(pts);
+        assertEquals(expected, result, 1e-6);
+    }
+
+    @Test
+    public void testIdenticalPoints() {
+        ClosestPair.Point[] pts = {
+                new ClosestPair.Point(2, 2),
+                new ClosestPair.Point(2, 2),
+                new ClosestPair.Point(5, 5)
+        };
+        double result = ClosestPair.closestPair(pts);
+        assertEquals(0.0, result, 1e-6);
     }
 }

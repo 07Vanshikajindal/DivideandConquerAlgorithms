@@ -3,13 +3,18 @@ package com.assignment.algos;
 import java.util.Arrays;
 
 public class DeterministicSelect {
-    public static int select(int[] arr, int k) { return select(arr, k, null); }
+
+    public static int select(int[] arr, int k) {
+        return select(arr, k, null);
+    }
 
     public static int select(int[] arr, int k, Metrics metrics) {
-        if (arr == null || arr.length == 0 || k < 0 || k >= arr.length)
+        if (Util.isNullOrEmpty(arr) || k < 0 || k >= arr.length)
             throw new IllegalArgumentException("Invalid input");
         if (metrics != null) metrics.startTimer();
+
         int res = selectRec(arr, 0, arr.length - 1, k, metrics);
+
         if (metrics != null) metrics.stopTimer();
         return res;
     }
@@ -32,18 +37,19 @@ public class DeterministicSelect {
         }
     }
 
+    // Partition using Util.swap()
     private static int partition(int[] arr, int left, int right, int pivotIndex, Metrics metrics) {
         int pivotValue = arr[pivotIndex];
-        swap(arr, pivotIndex, right);
+        Util.swap(arr, pivotIndex, right); // use Util
         int storeIndex = left;
         for (int i = left; i < right; i++) {
             if (metrics != null) metrics.incComparisons();
             if (arr[i] < pivotValue) {
-                swap(arr, storeIndex, i);
+                Util.swap(arr, storeIndex, i); // use Util
                 storeIndex++;
             }
         }
-        swap(arr, storeIndex, right);
+        Util.swap(arr, storeIndex, right); // use Util
         return storeIndex;
     }
 
@@ -59,19 +65,15 @@ public class DeterministicSelect {
             int subRight = Math.min(i + 4, right);
             Arrays.sort(arr, i, subRight + 1);
             int medianIndex = i + (subRight - i) / 2;
-            swap(arr, left + numMedians, medianIndex);
+            Util.swap(arr, left + numMedians, medianIndex); // use Util
             numMedians++;
         }
 
         return medianOfMedians(arr, left, left + numMedians - 1, metrics);
     }
 
-    private static void swap(int[] arr, int i, int j) {
-        int tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
-    }
-
     public static void main(String[] args) {
-        int[] a = {12,3,5,7,4,19,26};
+        int[] a = {12, 3, 5, 7, 4, 19, 26};
         int k = 3;
         System.out.println("kth = " + select(a, k));
     }

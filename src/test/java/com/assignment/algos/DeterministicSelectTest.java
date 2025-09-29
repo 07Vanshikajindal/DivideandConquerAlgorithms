@@ -27,4 +27,29 @@ public class DeterministicSelectTest {
             assertEquals(expected[k], DeterministicSelect.select(a, k));
         }
     }
+
+    @Test
+    public void testSingleElement() {
+        int[] a = {42};
+        int result = DeterministicSelect.select(a, 0);
+        assertEquals(42, result);
+    }
+
+    @Test
+    public void testAllEqualElements() {
+        int[] a = {7, 7, 7, 7, 7};
+        for (int k = 0; k < a.length; k++) {
+            assertEquals(7, DeterministicSelect.select(Arrays.copyOf(a, a.length), k));
+        }
+    }
+
+    @Test
+    public void testNegativeNumbers() {
+        int[] a = {-5, -10, -3, -8, -2};
+        int[] expected = Arrays.copyOf(a, a.length);
+        Arrays.sort(expected);
+        for (int k = 0; k < a.length; k++) {
+            assertEquals(expected[k], DeterministicSelect.select(Arrays.copyOf(a, a.length), k));
+        }
+    }
 }

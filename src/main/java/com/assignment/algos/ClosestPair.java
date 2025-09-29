@@ -12,17 +12,21 @@ public class ClosestPair {
     private static double dist(Point p1, Point p2) {
         double dx = p1.x - p2.x;
         double dy = p1.y - p2.y;
-        return Math.sqrt(dx*dx + dy*dy);
+        return Math.sqrt(dx * dx + dy * dy);
     }
 
-    public static double closestPair(Point[] pts) { return closestPair(pts, null); }
+    public static double closestPair(Point[] pts) {
+        return closestPair(pts, null);
+    }
 
     public static double closestPair(Point[] pts, Metrics metrics) {
-        if (pts == null || pts.length < 2) return Double.POSITIVE_INFINITY;
+        if (Util.isNullOrEmpty(pts) || pts.length < 2) return Double.POSITIVE_INFINITY;
         if (metrics != null) metrics.startTimer();
+
         Point[] sorted = Arrays.copyOf(pts, pts.length);
         Arrays.sort(sorted, Comparator.comparingDouble(p -> p.x));
         double res = closestUtil(sorted, 0, sorted.length - 1, metrics);
+
         if (metrics != null) metrics.stopTimer();
         return res;
     }
